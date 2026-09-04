@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon projet professionnel — Loïc Favier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1B2D;
+    --navy-soft:#16273F;
+    --blue:#2F6FED;
+    --mint:#2FD9A6;
+    --bg:#F6F8FB;
+    --card:#FFFFFF;
+    --text:#16233A;
+    --text-soft:#5B6B85;
+    --border:#E4E9F1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  h1,h2,h3,.brand{font-family:'Space Grotesk',sans-serif;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,27,45,0.92);
+    backdrop-filter:blur(8px);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{color:#fff;font-weight:700;font-size:1.05rem;letter-spacing:-0.01em;}
+  .brand span{color:var(--mint);}
+  nav ul{list-style:none;display:flex;gap:28px;}
+  nav a{color:#C9D3E4;text-decoration:none;font-size:0.88rem;font-weight:500;transition:color .15s;}
+  nav a:hover{color:#fff;}
+
+  /* HERO */
+  header.hero{
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-soft) 55%,#1B3358 100%);
+    color:#fff;
+    padding:72px 0 88px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;right:-120px;top:-120px;
+    width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(47,217,166,0.18),transparent 70%);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center;
+    position:relative;z-index:1;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(47,217,166,0.12);
+    border:1px solid rgba(47,217,166,0.35);
+    color:var(--mint);
+    font-size:0.78rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;
+    padding:6px 14px;border-radius:100px;margin-bottom:20px;
+  }
+  header.hero h1{font-size:2.6rem;font-weight:700;line-height:1.15;margin-bottom:18px;letter-spacing:-0.02em;}
+  header.hero h1 em{font-style:normal;color:var(--mint);}
+  header.hero p.lead{color:#C9D3E4;font-size:1.08rem;max-width:520px;margin-bottom:28px;}
+  .hero-meta{display:flex;gap:28px;flex-wrap:wrap;}
+  .hero-meta div{border-left:2px solid rgba(255,255,255,0.15);padding-left:12px;}
+  .hero-meta .num{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:#fff;}
+  .hero-meta .label{font-size:0.78rem;color:#9FB0CC;}
+  .hero-portrait{
+    width:220px;height:220px;border-radius:24px;overflow:hidden;
+    justify-self:end;
+    border:3px solid rgba(255,255,255,0.12);
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+  }
+  .hero-portrait img{width:100%;height:100%;object-fit:cover;}
+
+  /* SECTIONS */
+  section{padding:64px 0;}
+  section.alt{background:#EFF3F9;}
+  .section-head{max-width:640px;margin-bottom:36px;}
+  .kicker{color:var(--blue);font-weight:600;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;}
+  h2{font-size:1.7rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:10px;}
+  .section-head p{color:var(--text-soft);}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:28px;
+  }
+
+  /* Démarche box */
+  .demarche{
+    margin-top:20px;
+    background:#F1F6FF;
+    border:1px solid #D9E6FF;
+    border-left:4px solid var(--blue);
+    border-radius:10px;
+    padding:16px 20px;
+    font-size:0.9rem;
+    color:#2B3B57;
+  }
+  .demarche strong{
+    display:block;
+    color:var(--blue);
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-bottom:6px;
+    font-weight:700;
+  }
+
+  /* Métier grid */
+  .metier-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:8px;}
+  .metier-grid .card h3{font-size:1rem;color:var(--blue);margin-bottom:10px;}
+  .metier-grid .card p{color:var(--text-soft);font-size:0.94rem;}
+
+  /* Ecart */
+  .ecart-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .ecart-grid .card{border-top:4px solid var(--mint);}
+  .ecart-grid .card.gap{border-top-color:#F0A63A;}
+  .ecart-grid h3{font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .ecart-grid ul{padding-left:18px;color:var(--text-soft);font-size:0.92rem;}
+  .ecart-grid li{margin-bottom:8px;}
+
+  /* Competences cards */
+  .comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .comp-card{
+    background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;
+    position:relative;
+  }
+  .comp-num{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--blue),var(--mint));
+    color:#fff;font-weight:700;font-family:'Space Grotesk',sans-serif;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:14px;font-size:0.95rem;
+  }
+  .comp-card h3{font-size:1.02rem;margin-bottom:8px;}
+  .comp-card p{color:var(--text-soft);font-size:0.9rem;margin-bottom:10px;}
+  .comp-card .action{
+    font-size:0.85rem;background:#F6F8FB;border-radius:8px;padding:10px 12px;color:#2B3B57;
+  }
+  .comp-card .action b{color:var(--blue);}
+
+  /* Illustration */
+  .illu-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:0 12px 32px rgba(15,27,45,0.08);}
+
+  /* Podcast */
+  .podcast-card{
+    display:flex;align-items:center;gap:20px;
+    background:var(--navy);color:#fff;border-radius:16px;padding:28px;
+  }
+  .podcast-icon{
+    width:56px;height:56px;border-radius:50%;
+    background:rgba(47,217,166,0.15);border:1px solid rgba(47,217,166,0.4);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    font-size:1.4rem;
+  }
+  .podcast-card h3{margin-bottom:6px;}
+  .podcast-card p{color:#B9C6DC;font-size:0.92rem;}
+
+  /* Salaire */
+  .salaire-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+  .salaire-table th,.salaire-table td{padding:14px 18px;text-align:left;font-size:0.9rem;}
+  .salaire-table thead{background:var(--navy);color:#fff;}
+  .salaire-table tbody tr:nth-child(even){background:#F6F8FB;}
+  .salaire-table td.range{font-weight:700;color:var(--blue);font-family:'Space Grotesk',sans-serif;}
+
+  /* Footer */
+  footer{background:var(--navy);color:#9FB0CC;padding:40px 0;text-align:center;font-size:0.85rem;}
+  footer strong{color:#fff;}
+
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-portrait{justify-self:start;width:140px;height:140px;order:-1;}
+    .metier-grid,.ecart-grid,.comp-grid{grid-template-columns:1fr;}
+    header.hero h1{font-size:2rem;}
+    .podcast-card{flex-direction:column;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Loïc Favier <span>· Mon projet professionnel</span></div>
+    <ul>
+      <li><a href="#metier">Le métier</a></li>
+      <li><a href="#ecart">Mon profil</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#podcast">Podcast</a></li>
+      <li><a href="#marche">Marché</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">SAÉ · Usages avancés de l'IA générative — IMT Business School / IAE Limoges</div>
+      <h1>Je vise le métier de <em>Product Manager</em> dans la tech</h1>
+      <p class="lead">Étudiant en Master 1 Management de l'Innovation à l'IAE Limoges, en double diplôme avec l'IMT Business School. Ce site présente ma recherche sur ce métier, l'écart avec mon profil actuel, et le plan que je me fixe pour le combler.</p>
+      <div class="hero-meta">
+        <div><div class="num">46 k€</div><div class="label">Salaire moyen chef de produit (APEC)</div></div>
+        <div><div class="num">+50%</div><div class="label">Offres PM en 3 ans (FoxUp)</div></div>
+        <div><div class="num">3</div><div class="label">Compétences prioritaires identifiées</div></div>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <img src="images/photo-professionnelle.png" alt="Portrait professionnel de Loïc Favier">
+    </div>
+  </div>
+</header>
+
+<section id="metier">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01 — Recherche approfondie</div>
+      <h2>Le métier de Product Manager, en pratique</h2>
+      <p>Synthèse de deux recherches approfondies croisées (ChatGPT et Gemini Deep Research), en m'appuyant obligatoirement sur les fiches officielles France Travail (ROME M1703) et APEC (Chef de produit digital).</p>
+    </div>
+
+    <div class="metier-grid">
+      <div class="card">
+        <h3>Le quotidien du métier</h3>
+        <p>Le Product Manager est le "chef d'orchestre" d'un produit numérique : il définit la vision et la roadmap, priorise les fonctionnalités (méthodes RICE, MoSCoW) et coordonne les équipes dev, design et data. Il alterne entre phases de <em>Discovery</em> (recherche utilisateur, analyse concurrentielle) et de <em>Delivery</em> (cérémonies agiles, livraison). Contrairement au Product Owner (exécution) ou au Chef de projet (délais et budget), le PM porte la responsabilité de l'impact du produit sur le marché.</p>
+      </div>
+      <div class="card">
+        <h3>Compétences attendues</h3>
+        <p>Techniques : méthodologies Agile (Scrum, Kanban), analyse de données (SQL, Google Analytics, Amplitude), outils du métier (Jira, Confluence, Figma). Comportementales : leadership d'influence, priorisation, empathie utilisateur. Business : sens du ROI, Unit Economics (CAC, LTV, MRR), stratégie Go-To-Market. La fiche APEC insiste particulièrement sur l'autonomie, la rigueur et la capacité à convaincre.</p>
+      </div>
+    </div>
+
+    <div class="demarche">
+      <strong>Ma démarche</strong>
+      J'ai lancé deux recherches en parallèle (ChatGPT et Gemini Deep Research) sur le même prompt structuré, avec la consigne explicite de croiser une fiche France Travail et une fiche APEC. Les deux convergent sur l'essentiel, ce qui m'a rassuré sur la fiabilité. En revanche, certains chiffres avancés sans source claire dans le texte (ex. "82 % des pros perçoivent le marché comme tendu", "57 % des offres citent l'IA") sont à prendre avec prudence : ils sonnent précis mais je n'ai pas pu les vérifier à la source. J'ai donc gardé surtout les fourchettes de salaire, cohérentes avec l'APEC.
+    </div>
+  </div>
+</section>
+
+<section id="ecart" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02 — Analyse critique</div>
+      <h2>Mon profil face aux attentes du métier</h2>
+      <p>Écart entre mon parcours (BUT GEA, Licence de gestion, M1 Management de l'Innovation IAE/IMT) et les exigences réelles du poste.</p>
+    </div>
+
+    <div class="ecart-grid">
+      <div class="card">
+        <h3>✅ Mes atouts transférables</h3>
+        <ul>
+          <li>Excellente maîtrise des fondamentaux financiers et business (calcul de coûts, rentabilité, Unit Economics)</li>
+          <li>Double culture innovation / technologie via le double diplôme IAE Limoges × IMT Business School</li>
+          <li>Rigueur en gestion de projet et pilotage de processus organisationnels (BUT GEA)</li>
+        </ul>
+      </div>
+      <div class="card gap">
+        <h3>⚠️ Mes points à combler</h3>
+        <ul>
+          <li>Légitimité technique face aux ingénieurs (pas de formation initiale en informatique)</li>
+          <li>Pratique opérationnelle des outils standards (Jira, Confluence, Figma, SQL)</li>
+          <li>Absence de réalisations produit concrètes à présenter en entretien</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="competences">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03 — Analyse Gemini Notebook</div>
+      <h2>3 compétences prioritaires à développer</h2>
+      <p>Interrogation du chatbot Gemini Notebook à partir des recherches importées, pour identifier les 3 axes les plus prioritaires et comment les acquérir en Master 2.</p>
+    </div>
+
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-num">01</div>
+        <h3>Crédibilité technique &amp; data</h3>
+        <p>Frein principal : l'absence de formation initiale en informatique limite le dialogue d'égal à égal avec les développeurs.</p>
+        <div class="action"><b>Acquisition :</b> formation certifiante en SQL + projet applicatif personnel en No-Code (Softr, n8n, Cursor)</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-num">02</div>
+        <h3>Maîtrise de l'outillage produit</h3>
+        <p>Déficit de pratique sur les logiciels standards du métier, potentiellement éliminatoire en entretien technique.</p>
+        <div class="action"><b>Acquisition :</b> certifications éditeurs Jira / Confluence + entraînement wireframes sur Figma</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-num">03</div>
+        <h3>Immersion professionnelle</h3>
+        <p>Absence de réalisations produit tangibles à présenter — le levier le plus déterminant pour l'insertion.</p>
+        <div class="action"><b>Acquisition :</b> cibler une alternance de M2 comme Product Owner / Associate PM en B2B SaaS</div>
+      </div>
+    </div>
+
+    <div class="demarche">
+      <strong>Ma démarche</strong>
+      Outil : Gemini Notebook (NotebookLM), à partir des deux PDF de recherche importés comme sources. Une seule question a suffi pour obtenir les 3 axes. Ce qui m'a convaincu, c'est qu'ils découlent vraiment de l'écart identifié dans ma recherche, sans compétence inventée hors sujet. Le point faible : les moyens d'acquisition restaient génériques ("une formation en SQL") sans nommer de plateforme précise. J'ai dû les préciser moi-même pour qu'ils soient réellement actionnables.
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="illustration">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04 — Illustration</div>
+      <h2>Le métier en image</h2>
+      <p>Illustration de synthèse représentant le quotidien du Product Manager : pilotage stratégique, collaboration transverse et prise de décision par la donnée.</p>
+    </div>
+    <div class="illu-wrap">
+      <img src="images/illustration-metier.png" alt="Illustration représentant le métier de Product Manager et ses compétences clés">
+    </div>
+    <div class="demarche">
+      <strong>Ma démarche</strong>
+      Outil : ChatGPT (génération d'image). C'est la production qui m'a demandé le plus d'itérations. Mes premiers essais étaient trop génériques (un bureau tech quelconque sans lien clair avec les compétences), et quand j'ai voulu écrire les compétences dans l'image, l'IA sortait du texte déformé et fautif. J'ai fini par rédiger un prompt très dirigé : palette imposée, composition en triptyque, objets précis (Kanban, dashboard, wireframe) et labels courts avec consigne stricte d'orthographe. Il a fallu plusieurs générations pour obtenir une image nette où les mots sont correctement écrits.
+    </div>
+  </div>
+</section>
+
+<section id="podcast">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">05 — Podcast à deux voix</div>
+      <h2>Devenir Product Manager sans être ingénieur</h2>
+    </div>
+    <div class="podcast-card">
+      <div class="podcast-icon">🎙️</div>
+      <div style="flex:1;">
+        <h3>Devenir Product Manager sans être ingénieur</h3>
+        <p style="margin-bottom:16px;">Dialogue à deux voix généré à partir de mes sources, sur le métier de Product Manager et la stratégie pour y accéder depuis un profil business.</p>
+        <audio controls preload="none" style="width:100%;">
+          <source src="audio/podcast-product-manager.m4a" type="audio/mp4">
+          Votre navigateur ne prend pas en charge la lecture audio.
+        </audio>
+      </div>
+    </div>
+    <div class="demarche">
+      <strong>Ma démarche</strong>
+      Outil : NotebookLM (Gemini), génération audio à partir des mêmes sources que l'analyse de compétences, avec un prompt de personnalisation orientant le contenu sur les 3 axes identifiés. Le format en duo fonctionne et reste plus digeste qu'une lecture de rapport, mais honnêtement il manque encore de réalité : l'échange sonne un peu trop lisse et scénarisé, sans les hésitations ni le vécu d'une vraie conversation entre professionnels. Autre limite : il dure près de 15 minutes alors que la consigne visait 3 à 6, donc je n'en présenterai qu'un extrait.
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="marche">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Marché de l'emploi</div>
+      <h2>Rémunération et perspectives</h2>
+      <p>D'après l'APEC, The Product Crew et Fox'Up — moyennes brutes annuelles, marché français.</p>
+    </div>
+    <table class="salaire-table">
+      <thead>
+        <tr><th>Expérience</th><th>Intitulé</th><th>Fourchette brut annuel</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Junior (0–2 ans)</td><td>Associate PM / Junior PM</td><td class="range">35 k€ – 50 k€</td></tr>
+        <tr><td>Confirmé (2–5 ans)</td><td>Product Manager</td><td class="range">50 k€ – 65 k€</td></tr>
+        <tr><td>Senior (5–8 ans)</td><td>Senior PM / Lead PM</td><td class="range">65 k€ – 90 k€</td></tr>
+        <tr><td>Direction (8 ans+)</td><td>Head of Product / VP Product</td><td class="range">80 k€ – 140 k€+</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="musique">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Bonus — Musique</div>
+      <h2>Une musique inspirée du métier</h2>
+      <p>Morceau original généré avec Suno, sur le thème du Product Manager (vision, priorisation, lien entre les équipes).</p>
+    </div>
+    <div class="podcast-card" style="background:linear-gradient(135deg,#2F6FED,#2FD9A6);">
+      <div class="podcast-icon" style="background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.5);">🎵</div>
+      <div style="flex:1;">
+        <h3>« Product Manager » — généré avec Suno</h3>
+        <p style="color:rgba(255,255,255,0.9);margin-bottom:16px;">Electropop motivant, paroles en français sur le quotidien du métier visé.</p>
+        <a href="https://suno.com/song/2215060a-bb46-4178-ac5b-8386dd3792c0" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0F1B2D;font-weight:600;font-size:0.9rem;padding:11px 20px;border-radius:100px;text-decoration:none;">
+          ▶ Écouter le morceau sur Suno
+        </a>
+      </div>
+    </div>
+    <div class="demarche">
+      <strong>Ma démarche</strong>
+      Outil : Suno, avec un prompt de style (electropop motivant, ~120 bpm, voix française) et des paroles écrites sur mesure évoquant le quotidien du Product Manager. Amusant de voir qu'une IA génère un morceau complet, paroles et musique, à partir d'une simple description. Le rendu est correct pour un morceau d'ambiance, mais ça reste formaté et un peu impersonnel, sans la finesse d'un vrai auteur. C'est un bonus "pour le plaisir", pas une pièce sérieuse du dossier.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Loïc Favier — <strong>Master 1 Management de l'Innovation</strong>, IAE Limoges × IMT Business School<br>
+    Site généré avec l'assistance de Claude à partir de mes recherches et productions personnelles — SAÉ "Usages avancés de l'IA générative", septembre 2026.
+  </div>
+</footer>
+
+</body>
+</html>
